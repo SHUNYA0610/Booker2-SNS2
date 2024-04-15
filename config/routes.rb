@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
   resources :book_comments, only: [:destroy]
   
+  resources :users, only: [:show,:edit,:update]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
+  
   resources :users, only: [:index, :show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
