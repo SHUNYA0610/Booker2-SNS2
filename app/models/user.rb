@@ -28,6 +28,9 @@ class User < ApplicationRecord
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
   
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  
     # 指定したユーザーをフォローする
   def follow(user)
     active_relationships.create(followed_id: user.id)
